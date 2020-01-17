@@ -280,10 +280,12 @@ func (r *Renderer) RenderNode(w io.Writer, node *bf.Node, entering bool) bf.Walk
 	case bf.Del:
 		r.out(w, strikethroughTag)
 	case bf.Table:
+		println("bf.Table")
 		if !entering {
 			r.cr(w)
 		}
 	case bf.TableCell:
+		println("bf.TableCell")
 		if node.IsHeader {
 			r.out(w, tableTag)
 		} else {
@@ -292,10 +294,13 @@ func (r *Renderer) RenderNode(w io.Writer, node *bf.Node, entering bool) bf.Walk
 			}
 		}
 	case bf.TableHead:
+		println("bf.TableHead")
 		break
 	case bf.TableBody:
+		println("bf.TableBody")
 		break
 	case bf.TableRow:
+		println("bf.TableRow")
 		if node.Parent.Type == bf.TableHead {
 			r.out(w, tableTag)
 
